@@ -11,6 +11,7 @@ import UIKit
 class ArithmeticOperationViewController: UIViewController {
 
   let operation: ArithmeticOperation
+  let level = ArithmeticOperation.Level.easy
   
   private lazy var gradient = {
     CAGradientLayer.makeGradientLayer()
@@ -29,7 +30,9 @@ class ArithmeticOperationViewController: UIViewController {
                                                       UIFont.systemFont(ofSize: 50, weight: .bold))
     
     let symbol = operation.getSymbolFor(configuration: configuration)
-    let operationView = OperationView(lhs: "10", rhs: "1", symbol: symbol)
+    let (lhs, rhs) = operation.generateNumbersForLevel(level: .easy)
+    
+    let operationView = OperationView(lhs: String(lhs), rhs: String(rhs), symbol: symbol)
     operationView.translatesAutoresizingMaskIntoConstraints = false
     
     self.view.addSubview(operationView)
@@ -49,4 +52,9 @@ class ArithmeticOperationViewController: UIViewController {
     super.viewDidLayoutSubviews()
     gradient.frame = view.bounds
   }
+  
+  func makeOperationView(operation: ArithmeticOperation, level: ArithmeticOperation.Level) {
+      
+  }
 }
+

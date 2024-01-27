@@ -20,6 +20,12 @@ enum ArithmeticOperation {
     case outline
   }
   
+  enum Level {
+    case easy
+    case medium
+    case hard
+  }
+  
   func performOperation(lhs: Int, rhs: Int) -> Int {
     switch self {
     case .add:
@@ -49,6 +55,46 @@ enum ArithmeticOperation {
       systemName += ".circle"
     }
     return UIImage(systemName: systemName, withConfiguration: configuration)!
+  }
+  
+  func generateNumbersForLevel(level: Level) -> (Int, Int) {
+    let range = getNumberRangeForLevel(level)
+
+    switch self {
+    
+    // by convention lhs should be larger that rhs
+    case .add, .multiply:
+      let randomNumber1 = Int.random(in: range)
+      let randomNumber2 = Int.random(in: range)
+      
+      if randomNumber1 > randomNumber2 {
+        return (randomNumber1, randomNumber2)
+      } else {
+        return (randomNumber2, randomNumber1)
+      }
+      
+    // lhs must be larger than rhs
+    case .subtract:
+      let rhs = Int.random(in: range)
+      let lhs = rhs + Int.random(in: range)
+      return (lhs, rhs)
+    case .divide:
+      let rhs = Int.random(in: range)
+      let lhs = rhs * Int.random(in: range)
+      return (lhs, rhs)
+    }
+  }
+  
+  
+  private func getNumberRangeForLevel(_ level: ArithmeticOperation.Level) -> ClosedRange<Int> {
+    switch level {
+    case .easy:
+      return 1...9
+    case .medium:
+      return 1...99
+    case .hard:
+      return 1...999
+    }
   }
 }
 
