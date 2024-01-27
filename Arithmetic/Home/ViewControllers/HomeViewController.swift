@@ -13,9 +13,14 @@ class HomeViewController: UIViewController {
   
   var operations: [ArithmeticOperation] = [.add, .subtract, .multiply, .divide]
   
+  private lazy var gradient = {
+    let gradient = CAGradientLayer()
+    gradient.colors = [UIColor(rgb: 0x3FA8D3).cgColor, UIColor(rgb: 0xABCBEB).cgColor]
+    return gradient
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.primaryBackground
     operations.forEach {
       let configuration = UIImage.SymbolConfiguration(font:
                                                 UIFont.systemFont(ofSize: 30, weight: .bold))
@@ -23,7 +28,8 @@ class HomeViewController: UIViewController {
       let button = HomeButton(title: $0.buttonText, image: symbol)
       menuStackView.addArrangedSubview(button)
     }
-    navigationItem.title = "Home"
+    view.layer.insertSublayer(gradient, at: 0)
+    navigationItem.title = "Menu"
   }
   
   init() {
@@ -32,6 +38,11 @@ class HomeViewController: UIViewController {
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    gradient.frame = view.bounds
   }
 }
 
