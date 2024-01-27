@@ -31,6 +31,8 @@ class ArithmeticOperationViewController: UIViewController {
     let symbol = operation.getSymbolFor(configuration: configuration)
     let (lhs, rhs) = operation.generateNumbersForLevel(level: .easy)
     
+    print("\(operation.evaluate(lhs: lhs, rhs: rhs))")
+    
     let operationView = OperationView(lhs: String(lhs), rhs: String(rhs), symbol: symbol)
     operationView.translatesAutoresizingMaskIntoConstraints = false
     

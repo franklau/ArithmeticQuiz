@@ -85,6 +85,18 @@ enum ArithmeticOperation {
     }
   }
   
+  func evaluate(lhs: Int, rhs: Int) -> Int {
+    switch self {
+      case .add:
+      return lhs + rhs
+    case .subtract:
+      return lhs - rhs
+    case .multiply:
+      return lhs * rhs
+    case .divide:
+      return lhs / rhs
+    }
+  }
   
   private func getNumberRangeForLevel(_ level: ArithmeticOperation.Level) -> ClosedRange<Int> {
     switch level {
