@@ -26,8 +26,7 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     operations.forEach {
-      let configuration = UIImage.SymbolConfiguration(font:
-                                                        UIFont.systemFont(ofSize: 30, weight: .bold))
+      let configuration = UIImage.SymbolConfiguration(font: UIConstants.homePageButtonFont)
       let symbol = $0.getSymbolFor(configuration: configuration, symbolType: .outline)
       let button = HomeButton(title: $0.buttonText, image: symbol)
       button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)

@@ -26,8 +26,7 @@ class ArithmeticOperationViewController: UIViewController {
     super.viewDidLoad()
     view.layer.insertSublayer(gradient, at: 0)
     
-    let configuration = UIImage.SymbolConfiguration(font:
-                                                      UIFont.systemFont(ofSize: 50, weight: .bold))
+    let configuration = UIImage.SymbolConfiguration(font: UIConstants.arithmeticOperationFont)
     
     let symbol = operation.getSymbolFor(configuration: configuration)
     let (lhs, rhs) = operation.generateNumbersForLevel(level: .easy)

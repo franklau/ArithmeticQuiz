@@ -10,7 +10,7 @@ import UIKit
 
 class OperationView: UIStackView {
   
-  private let font = UIFont.systemFont(ofSize: 50, weight: .bold)
+  private let font = UIConstants.arithmeticOperationFont
   private let textColor = UIColor.primaryButtonText
   
   init(lhs: String, rhs: String, symbol: UIImage) {

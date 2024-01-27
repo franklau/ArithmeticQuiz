@@ -27,6 +27,7 @@
 		015F1A502B656B080086A8DF /* OperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A4F2B656B080086A8DF /* OperationView.swift */; };
 		015F1A522B6570920086A8DF /* UIStackView+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A512B6570920086A8DF /* UIStackView+Create.swift */; };
 		015F1A542B6579B70086A8DF /* CAGradientLayer+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A532B6579B70086A8DF /* CAGradientLayer+Theme.swift */; };
+		015F1A572B65AC5E0086A8DF /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A562B65AC5E0086A8DF /* UIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		015F1A4F2B656B080086A8DF /* OperationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationView.swift; sourceTree = "<group>"; };
 		015F1A512B6570920086A8DF /* UIStackView+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Create.swift"; sourceTree = "<group>"; };
 		015F1A532B6579B70086A8DF /* CAGradientLayer+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Theme.swift"; sourceTree = "<group>"; };
+		015F1A562B65AC5E0086A8DF /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		015F19FF2B64979F0086A8DF /* Arithmetic */ = {
 			isa = PBXGroup;
 			children = (
+				015F1A552B65AC490086A8DF /* Constants */,
 				015F1A452B64CE520086A8DF /* Extensions */,
 				015F1A422B64BD610086A8DF /* Models */,
 				015F1A392B64B1FF0086A8DF /* Coordinator */,
@@ -230,6 +233,14 @@
 				015F1A4D2B6569E70086A8DF /* ArithmeticOperationViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		015F1A552B65AC490086A8DF /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				015F1A562B65AC5E0086A8DF /* UIConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +378,7 @@
 				015F1A0B2B64979F0086A8DF /* Arithmetic.xcdatamodeld in Sources */,
 				015F1A522B6570920086A8DF /* UIStackView+Create.swift in Sources */,
 				015F1A3B2B64B2160086A8DF /* Coordinator.swift in Sources */,
+				015F1A572B65AC5E0086A8DF /* UIConstants.swift in Sources */,
 				015F1A502B656B080086A8DF /* OperationView.swift in Sources */,
 				015F1A012B64979F0086A8DF /* AppDelegate.swift in Sources */,
 				015F1A472B64CE630086A8DF /* UIColor+Theme.swift in Sources */,
