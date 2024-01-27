@@ -7,29 +7,41 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+protocol HomeViewControllerDelegate: AnyObject {
+  func userSelectedOperation(operation: ArithmeticOperation)
+}
 
+class HomeViewController: UIViewController {
+  
+  weak var delegate: HomeViewControllerDelegate?
+  
   @IBOutlet weak var menuStackView: UIStackView!
   
   var operations: [ArithmeticOperation] = [.add, .subtract, .multiply, .divide]
   
   private lazy var gradient = {
-    let gradient = CAGradientLayer()
-    gradient.colors = [UIColor(rgb: 0x3FA8D3).cgColor, UIColor(rgb: 0xABCBEB).cgColor]
-    return gradient
+    CAGradientLayer.makeGradientLayer()
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     operations.forEach {
       let configuration = UIImage.SymbolConfiguration(font:
-                                                UIFont.systemFont(ofSize: 30, weight: .bold))
-      let symbol = $0.getSymbolFor(configuration: configuration)
+                                                        UIFont.systemFont(ofSize: 30, weight: .bold))
+      let symbol = $0.getSymbolFor(configuration: configuration, symbolType: .outline)
       let button = HomeButton(title: $0.buttonText, image: symbol)
+      button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
       menuStackView.addArrangedSubview(button)
     }
     view.layer.insertSublayer(gradient, at: 0)
     navigationItem.title = "Menu"
+  }
+  
+  @objc func buttonTapped(_ button: UIButton) {
+    let index = menuStackView.arrangedSubviews.firstIndex(of: button)
+    guard let index = index else { return }
+    let operation = operations[index]
+    delegate?.userSelectedOperation(operation: operation)
   }
   
   init() {

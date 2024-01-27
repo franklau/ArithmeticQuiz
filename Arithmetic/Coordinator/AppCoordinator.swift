@@ -16,6 +16,7 @@ class AppCoordinator: Coordinator {
     self.window = window
     let homeVC = HomeViewController()
     rootViewController = UINavigationController(rootViewController: homeVC)
+    homeVC.delegate = self
   }
   
   func start() {
@@ -23,4 +24,11 @@ class AppCoordinator: Coordinator {
     window.makeKeyAndVisible()
   }
   
+}
+
+extension AppCoordinator: HomeViewControllerDelegate {
+  func userSelectedOperation(operation: ArithmeticOperation) {
+    let arithmeticOperationViewController = ArithmeticOperationViewController(operation: operation)
+    rootViewController.pushViewController(arithmeticOperationViewController, animated: true)
+  }
 }

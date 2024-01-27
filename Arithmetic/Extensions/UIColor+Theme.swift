@@ -15,7 +15,11 @@ extension UIColor {
   }
   
   static var navBackground: UIColor {
-    return UIColor(rgb: 0x3478F6)
+    return UIColor(rgb: 0x40C3C2)
+  }
+  
+  static var navTextColor: UIColor {
+    return UIColor(rgb: 0x4A4A4A)
   }
   
   static var primaryButton: UIColor {

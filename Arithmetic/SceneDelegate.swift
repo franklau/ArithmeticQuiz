@@ -45,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       customNavBarAppearance.configureWithOpaqueBackground()
       customNavBarAppearance.backgroundColor = UIColor.navBackground
       
-    customNavBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 30, weight: .bold)]
+    customNavBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.navTextColor, .font: UIFont.systemFont(ofSize: 30, weight: .bold)]
       return customNavBarAppearance
   }
 

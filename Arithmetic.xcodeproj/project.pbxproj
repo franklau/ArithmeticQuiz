@@ -23,6 +23,10 @@
 		015F1A412B64BB960086A8DF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015F1A3F2B64BB960086A8DF /* HomeViewController.xib */; };
 		015F1A442B64BD770086A8DF /* ArithmeticOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A432B64BD770086A8DF /* ArithmeticOperation.swift */; };
 		015F1A472B64CE630086A8DF /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A462B64CE630086A8DF /* UIColor+Theme.swift */; };
+		015F1A4E2B6569E70086A8DF /* ArithmeticOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A4D2B6569E70086A8DF /* ArithmeticOperationViewController.swift */; };
+		015F1A502B656B080086A8DF /* OperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A4F2B656B080086A8DF /* OperationView.swift */; };
+		015F1A522B6570920086A8DF /* UIStackView+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A512B6570920086A8DF /* UIStackView+Create.swift */; };
+		015F1A542B6579B70086A8DF /* CAGradientLayer+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A532B6579B70086A8DF /* CAGradientLayer+Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,10 @@
 		015F1A3F2B64BB960086A8DF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		015F1A432B64BD770086A8DF /* ArithmeticOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticOperation.swift; sourceTree = "<group>"; };
 		015F1A462B64CE630086A8DF /* UIColor+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Theme.swift"; sourceTree = "<group>"; };
+		015F1A4D2B6569E70086A8DF /* ArithmeticOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticOperationViewController.swift; sourceTree = "<group>"; };
+		015F1A4F2B656B080086A8DF /* OperationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationView.swift; sourceTree = "<group>"; };
+		015F1A512B6570920086A8DF /* UIStackView+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Create.swift"; sourceTree = "<group>"; };
+		015F1A532B6579B70086A8DF /* CAGradientLayer+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Theme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +125,7 @@
 				015F1A422B64BD610086A8DF /* Models */,
 				015F1A392B64B1FF0086A8DF /* Coordinator */,
 				015F1A342B6497C10086A8DF /* Home */,
+				015F1A482B6567BD0086A8DF /* ArithmeticOperation */,
 				015F1A002B64979F0086A8DF /* AppDelegate.swift */,
 				015F1A022B64979F0086A8DF /* SceneDelegate.swift */,
 				015F1A062B64979F0086A8DF /* Main.storyboard */,
@@ -192,8 +201,35 @@
 			isa = PBXGroup;
 			children = (
 				015F1A462B64CE630086A8DF /* UIColor+Theme.swift */,
+				015F1A512B6570920086A8DF /* UIStackView+Create.swift */,
+				015F1A532B6579B70086A8DF /* CAGradientLayer+Theme.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		015F1A482B6567BD0086A8DF /* ArithmeticOperation */ = {
+			isa = PBXGroup;
+			children = (
+				015F1A4C2B6569CF0086A8DF /* ViewControllers */,
+				015F1A4B2B6569C00086A8DF /* Views */,
+			);
+			path = ArithmeticOperation;
+			sourceTree = "<group>";
+		};
+		015F1A4B2B6569C00086A8DF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				015F1A4F2B656B080086A8DF /* OperationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		015F1A4C2B6569CF0086A8DF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				015F1A4D2B6569E70086A8DF /* ArithmeticOperationViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,11 +365,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				015F1A0B2B64979F0086A8DF /* Arithmetic.xcdatamodeld in Sources */,
+				015F1A522B6570920086A8DF /* UIStackView+Create.swift in Sources */,
 				015F1A3B2B64B2160086A8DF /* Coordinator.swift in Sources */,
+				015F1A502B656B080086A8DF /* OperationView.swift in Sources */,
 				015F1A012B64979F0086A8DF /* AppDelegate.swift in Sources */,
 				015F1A472B64CE630086A8DF /* UIColor+Theme.swift in Sources */,
+				015F1A542B6579B70086A8DF /* CAGradientLayer+Theme.swift in Sources */,
 				015F1A372B6498110086A8DF /* HomeButton.swift in Sources */,
 				015F1A032B64979F0086A8DF /* SceneDelegate.swift in Sources */,
+				015F1A4E2B6569E70086A8DF /* ArithmeticOperationViewController.swift in Sources */,
 				015F1A402B64BB960086A8DF /* HomeViewController.swift in Sources */,
 				015F1A3D2B64B2430086A8DF /* AppCoordinator.swift in Sources */,
 				015F1A442B64BD770086A8DF /* ArithmeticOperation.swift in Sources */,

@@ -15,6 +15,11 @@ enum ArithmeticOperation {
   case multiply
   case divide
   
+  enum SymbolType {
+    case normal
+    case outline
+  }
+  
   func performOperation(lhs: Int, rhs: Int) -> Int {
     switch self {
     case .add:
@@ -28,17 +33,20 @@ enum ArithmeticOperation {
     }
   }
   
-  func getSymbolFor( configuration: UIImage.Configuration) -> UIImage {
-    let systemName: String
+  func getSymbolFor( configuration: UIImage.Configuration, symbolType: SymbolType = .normal) -> UIImage {
+    var systemName: String
     switch self {
       case .add:
-      systemName = "plus.circle"
+      systemName = "plus"
     case .subtract:
-      systemName = "minus.circle"
+      systemName = "minus"
     case .multiply:
-      systemName = "multiply.circle"
+      systemName = "multiply"
     case .divide:
-      systemName = "divide.circle"
+      systemName = "divide"
+    }
+    if symbolType == .outline {
+      systemName += ".circle"
     }
     return UIImage(systemName: systemName, withConfiguration: configuration)!
   }
