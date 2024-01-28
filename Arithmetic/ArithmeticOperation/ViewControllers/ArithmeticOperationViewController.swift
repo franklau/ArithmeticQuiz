@@ -17,6 +17,19 @@ class ArithmeticOperationViewController: UIViewController {
     CAGradientLayer.makeGradientLayer()
   }()
   
+  private lazy var dividerLine: UIView = {
+    let view = UIView()
+    let height = 10.0
+    view.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      view.heightAnchor.constraint(equalToConstant: height)
+    ])
+    view.clipsToBounds = true
+    view.layer.cornerRadius = height / 2
+    view.backgroundColor = UIColor.primaryButtonText
+    return view
+  }()
+  
   init(operation: ArithmeticOperation) {
     self.operation = operation
     super.init(nibName: nil, bundle: nil)
@@ -36,12 +49,16 @@ class ArithmeticOperationViewController: UIViewController {
     let operationView = OperationView(lhs: String(lhs), rhs: String(rhs), symbol: symbol)
     operationView.translatesAutoresizingMaskIntoConstraints = false
     
-    self.view.addSubview(operationView)
-    NSLayoutConstraint.activate([
-      operationView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      operationView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-    ])
     view.addSubview(operationView)
+    view.addSubview(dividerLine)
+    
+    NSLayoutConstraint.activate([
+      operationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+      operationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      dividerLine.topAnchor.constraint(equalTo: operationView.bottomAnchor, constant: 10),
+      dividerLine.leadingAnchor.constraint(equalTo: operationView.leadingAnchor, constant: -10),
+      dividerLine.trailingAnchor.constraint(equalTo: operationView.trailingAnchor, constant: 10)
+    ])
   }
   
   
