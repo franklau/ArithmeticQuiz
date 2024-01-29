@@ -29,7 +29,7 @@
 		015F1A542B6579B70086A8DF /* CAGradientLayer+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A532B6579B70086A8DF /* CAGradientLayer+Theme.swift */; };
 		015F1A572B65AC5E0086A8DF /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A562B65AC5E0086A8DF /* UIConstants.swift */; };
 		015F1A612B66D5840086A8DF /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A602B66D5840086A8DF /* NumberPadView.swift */; };
-		015F1A632B66D5CC0086A8DF /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A622B66D5CC0086A8DF /* UIView+Autolayout.swift */; };
+		015F1A632B66D5CC0086A8DF /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A622B66D5CC0086A8DF /* UIView+Helpers.swift */; };
 		015F1A662B66E1760086A8DF /* NumberDigitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A642B66E1760086A8DF /* NumberDigitCell.swift */; };
 		015F1A672B66E1760086A8DF /* NumberDigitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015F1A652B66E1760086A8DF /* NumberDigitCell.xib */; };
 /* End PBXBuildFile section */
@@ -78,7 +78,7 @@
 		015F1A532B6579B70086A8DF /* CAGradientLayer+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Theme.swift"; sourceTree = "<group>"; };
 		015F1A562B65AC5E0086A8DF /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		015F1A602B66D5840086A8DF /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
-		015F1A622B66D5CC0086A8DF /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
+		015F1A622B66D5CC0086A8DF /* UIView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
 		015F1A642B66E1760086A8DF /* NumberDigitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberDigitCell.swift; sourceTree = "<group>"; };
 		015F1A652B66E1760086A8DF /* NumberDigitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberDigitCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,7 +214,7 @@
 				015F1A462B64CE630086A8DF /* UIColor+Theme.swift */,
 				015F1A512B6570920086A8DF /* UIStackView+Create.swift */,
 				015F1A532B6579B70086A8DF /* CAGradientLayer+Theme.swift */,
-				015F1A622B66D5CC0086A8DF /* UIView+Autolayout.swift */,
+				015F1A622B66D5CC0086A8DF /* UIView+Helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -401,7 +401,7 @@
 				015F1A032B64979F0086A8DF /* SceneDelegate.swift in Sources */,
 				015F1A4E2B6569E70086A8DF /* ArithmeticOperationViewController.swift in Sources */,
 				015F1A402B64BB960086A8DF /* HomeViewController.swift in Sources */,
-				015F1A632B66D5CC0086A8DF /* UIView+Autolayout.swift in Sources */,
+				015F1A632B66D5CC0086A8DF /* UIView+Helpers.swift in Sources */,
 				015F1A3D2B64B2430086A8DF /* AppCoordinator.swift in Sources */,
 				015F1A442B64BD770086A8DF /* ArithmeticOperation.swift in Sources */,
 				015F1A662B66E1760086A8DF /* NumberDigitCell.swift in Sources */,

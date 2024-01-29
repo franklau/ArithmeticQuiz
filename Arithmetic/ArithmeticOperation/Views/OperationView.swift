@@ -33,10 +33,36 @@ class OperationView: UIStackView {
     addArrangedSubview(numberStack)
   }
   
-  func update(lhs: String, rhs: String, symbol: UIImage) {
+  func update(lhs: String, rhs: String, symbol: UIImage, completion: (() -> Void)?) {
+    let screenshot = self.takeScreenshot()
+    let tempView = UIImageView(frame: CGRect(origin: .zero , size: screenshot.size))
+    tempView.image = screenshot
+    tempView.translatesAutoresizingMaskIntoConstraints = false
+    
+    self.addSubview(tempView)
+    
+    tempView.pin(to: self)
+  
+    showUIElements(false)
+    
     lhsLabel.text = lhs
     rhsLabel.text = rhs
     imageView.image = symbol
+    
+    UIView.animate(withDuration: 0.5, delay: 0, animations: {
+      
+      self.showUIElements(true)
+      tempView.alpha = 0
+    }, completion: { _ in
+      tempView.removeFromSuperview()
+      completion?()
+    })
+}
+  
+  private func showUIElements(_ show: Bool) {
+    self.lhsLabel.alpha = show ? 1 : 0
+    self.rhsLabel.alpha = show ? 1 : 0
+    self.imageView.alpha = show ? 1 : 0
   }
   
   private lazy var imageView: UIImageView = {
@@ -55,6 +81,7 @@ class OperationView: UIStackView {
     label.textColor = textColor
     return label
   }
+  
   
   required init(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
