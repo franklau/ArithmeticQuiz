@@ -9,6 +9,6 @@ import Foundation
 import UIKit
 
 struct UIConstants {
-  static let arithmeticOperationFont = UIFont.systemFont(ofSize: 50, weight: .bold)
+  static let arithmeticOperationFont = UIFont.systemFont(ofSize: 40, weight: .bold)
   static let homePageButtonFont = UIFont.systemFont(ofSize: 30, weight: .bold)
 }

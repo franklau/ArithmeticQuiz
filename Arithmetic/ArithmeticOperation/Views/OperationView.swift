@@ -12,14 +12,16 @@ class OperationView: UIStackView {
   
   private let font = UIConstants.arithmeticOperationFont
   private let textColor = UIColor.primaryButtonText
+  private var lhsLabel: UILabel!
+  private var rhsLabel: UILabel!
   
   init(lhs: String, rhs: String, symbol: UIImage) {
     super.init(frame: .zero)
     axis = .horizontal
     alignment = .fill
     let numberStack = UIStackView.makeVerticalStack()
-    let lhsLabel = makeLabelWithText(lhs)
-    let rhsLabel = makeLabelWithText(rhs)
+    lhsLabel = makeLabelWithText(lhs)
+    rhsLabel = makeLabelWithText(rhs)
     numberStack.addArrangedSubview(lhsLabel)
     numberStack.addArrangedSubview(rhsLabel)
     imageView.image = symbol
@@ -29,6 +31,12 @@ class OperationView: UIStackView {
     operationStack.addArrangedSubview(imageView)
     addArrangedSubview(operationStack)
     addArrangedSubview(numberStack)
+  }
+  
+  func update(lhs: String, rhs: String, symbol: UIImage) {
+    lhsLabel.text = lhs
+    rhsLabel.text = rhs
+    imageView.image = symbol
   }
   
   private lazy var imageView: UIImageView = {

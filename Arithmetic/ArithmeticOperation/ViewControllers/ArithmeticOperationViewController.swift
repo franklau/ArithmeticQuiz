@@ -13,6 +13,14 @@ class ArithmeticOperationViewController: UIViewController {
   let operation: ArithmeticOperation
   let level = ArithmeticOperation.Level.easy
   let edgePadding = 20.0
+  var operationView: OperationView!
+  
+  var result: Int!
+  var enteredResult = "" {
+    didSet {
+      answerLabel.text = enteredResult
+    }
+  }
   
   private lazy var gradient = {
     CAGradientLayer.makeGradientLayer()
@@ -31,7 +39,15 @@ class ArithmeticOperationViewController: UIViewController {
     return view
   }()
   
-  private var numPadView: UIView!
+  private lazy var answerLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+    label.textColor = UIColor.primaryButtonText
+    return label
+  }()
+  
+  private var numPadView: NumberPadView!
   
   init(operation: ArithmeticOperation) {
     self.operation = operation
@@ -42,33 +58,34 @@ class ArithmeticOperationViewController: UIViewController {
     super.viewDidLoad()
     view.layer.insertSublayer(gradient, at: 0)
     
-    let configuration = UIImage.SymbolConfiguration(font: UIConstants.arithmeticOperationFont)
+    let (operationView, result) = makeOperationViewAndResult(operation: operation, level: level)
+    self.operationView = operationView
     
-    let symbol = operation.getSymbolFor(configuration: configuration)
-    let (lhs, rhs) = operation.generateNumbersForLevel(level: .easy)
-    
-    print("\(operation.evaluate(lhs: lhs, rhs: rhs))")
-    
-    let operationView = OperationView(lhs: String(lhs), rhs: String(rhs), symbol: symbol)
-    operationView.translatesAutoresizingMaskIntoConstraints = false
-    
+    self.result = result
     view.addSubview(operationView)
     view.addSubview(dividerLine)
     
     NSLayoutConstraint.activate([
-      operationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+      operationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
       operationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       dividerLine.topAnchor.constraint(equalTo: operationView.bottomAnchor, constant: 10),
       dividerLine.leadingAnchor.constraint(equalTo: operationView.leadingAnchor, constant: -10),
       dividerLine.trailingAnchor.constraint(equalTo: operationView.trailingAnchor, constant: 10)
     ])
     
+    view.addSubview(answerLabel)
+    NSLayoutConstraint.activate([
+      answerLabel.trailingAnchor.constraint(equalTo: dividerLine.trailingAnchor),
+      answerLabel.topAnchor.constraint(equalTo: dividerLine.topAnchor, constant: 20)
+    ])
+        
     let screenBounds = UIScreen.main.bounds
     let width = (screenBounds.width - 2 * edgePadding)
-    let height = width 
+    let height = UIScreen.main.bounds.height / 2.2
     
     let bounds = CGRect(origin: .zero, size: CGSize(width: width, height: height))
     self.numPadView = NumberPadView(bounds: bounds)
+    self.numPadView.delegate = self
     self.numPadView.translatesAutoresizingMaskIntoConstraints = false
     
     self.view.addSubview(numPadView)
@@ -90,8 +107,35 @@ class ArithmeticOperationViewController: UIViewController {
     gradient.frame = view.bounds
   }
   
-  func makeOperationView(operation: ArithmeticOperation, level: ArithmeticOperation.Level) {
-      
+  func makeOperationViewAndResult(operation: ArithmeticOperation,
+                                  level: ArithmeticOperation.Level) -> (OperationView, Int) {
+    let configuration = UIImage.SymbolConfiguration(font: UIConstants.arithmeticOperationFont)
+    let symbol = operation.getSymbolFor(configuration: configuration)
+    let (lhs, rhs) = operation.generateNumbersForLevel(level: .easy)
+    let operationView = OperationView(lhs: String(lhs), rhs: String(rhs), symbol: symbol)
+    operationView.translatesAutoresizingMaskIntoConstraints = false
+    
+    let result = operation.evaluate(lhs: lhs, rhs: rhs)
+    return (operationView, result)
+  }
+}
+
+extension ArithmeticOperationViewController: NumberPadViewDelegate {
+  func numberPadDidSelect(number: Int) {
+    let maxDigits = 10
+    if enteredResult.count < maxDigits {
+      enteredResult += String(number)
+    }
+    
+    print("entered result \(enteredResult)")
+  }
+  
+  func numberPadDidEnter() {
+    enteredResult = ""
+    let configuration = UIImage.SymbolConfiguration(font: UIConstants.arithmeticOperationFont)
+    let symbol = operation.getSymbolFor(configuration: configuration)
+    let (lhs, rhs) = operation.generateNumbersForLevel(level: .easy)
+    operationView.update(lhs: String(lhs), rhs: String(rhs), symbol: symbol)
   }
 }
 

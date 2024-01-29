@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol NumberPadViewDelegate: AnyObject {
+  func numberPadDidSelect(number: Int)
+  func numberPadDidEnter()
+}
+
 class NumberPadView: UIView {
+  
+  weak var delegate: NumberPadViewDelegate?
   
   enum NumberPadValue: Equatable {
     case numeric(value: Int)
@@ -39,9 +46,9 @@ class NumberPadView: UIView {
   let numItemsPerRow = 3
   let numElementsOnLastRow = 2
   let interItemSpacing = 10.0
-  let lineSpacing = 20.0
+  let lineSpacing = 10.0
   
-  let pinPadValues: [NumberPadValue] = {
+  let numPadValues: [NumberPadValue] = {
     return [9, 8, 7, 4, 5, 6, 1, 2, 3, 0].map { .numeric(value: $0) } + [.enter]
   }()
   
@@ -85,7 +92,7 @@ extension NumberPadView: UICollectionViewDelegateFlowLayout {
     let totalVerticalSpacing = lineSpacing * CGFloat(numRows - 1)
     let cellHeight = (totalHeight - totalVerticalSpacing) / CGFloat(numRows)
     
-    if indexPath.row < pinPadValues.count - 1 {
+    if indexPath.row < numPadValues.count - 1 {
       return CGSize(width: cellWidth, height: cellHeight)
     } else  {
       let enterCellWidth = totalWidth - interItemSpacing - cellWidth // takes up 2 spaces
@@ -102,7 +109,13 @@ extension NumberPadView: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+    let numPadValue = numPadValues[indexPath.row]
+    switch numPadValue {
+    case .numeric(value: let value):
+      delegate?.numberPadDidSelect(number: value)
+    case .enter:
+      delegate?.numberPadDidEnter()
+    }
   }
 }
 
@@ -110,7 +123,7 @@ extension NumberPadView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberDigitCell.reuseIndentifier,
                                                   for: indexPath) as! NumberDigitCell
-    let pinPadValue = pinPadValues[indexPath.row]
+    let pinPadValue = numPadValues[indexPath.row]
     if pinPadValue == .enter {
       cell.updateText(pinPadValue.displayText, backgroundColor: UIColor.confirmButton)
     } else {
@@ -120,6 +133,6 @@ extension NumberPadView: UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return pinPadValues.count
+    return numPadValues.count
   }
 }
