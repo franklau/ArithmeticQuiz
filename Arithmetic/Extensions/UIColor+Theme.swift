@@ -26,9 +26,20 @@ extension UIColor {
     return UIColor(rgb: 0x50E3C2)
   }
   
+  static var secondaryButton: UIColor {
+    return UIColor(rgb: 0xF8E71C)
+  }
+  
+  static var confirmButton: UIColor {
+    return UIColor(rgb: 0x50E3C2)
+  }
+  
+  
   static var primaryButtonText: UIColor {
     return UIColor(rgb: 0x4A4A4A)
   }
+  
+  
   
   convenience init(red: Int, green: Int, blue: Int) {
        assert(red >= 0 && red <= 255, "Invalid red component")

@@ -12,6 +12,7 @@ class ArithmeticOperationViewController: UIViewController {
 
   let operation: ArithmeticOperation
   let level = ArithmeticOperation.Level.easy
+  let edgePadding = 20.0
   
   private lazy var gradient = {
     CAGradientLayer.makeGradientLayer()
@@ -29,6 +30,8 @@ class ArithmeticOperationViewController: UIViewController {
     view.backgroundColor = UIColor.primaryButtonText
     return view
   }()
+  
+  private var numPadView: UIView!
   
   init(operation: ArithmeticOperation) {
     self.operation = operation
@@ -59,8 +62,24 @@ class ArithmeticOperationViewController: UIViewController {
       dividerLine.leadingAnchor.constraint(equalTo: operationView.leadingAnchor, constant: -10),
       dividerLine.trailingAnchor.constraint(equalTo: operationView.trailingAnchor, constant: 10)
     ])
+    
+    let screenBounds = UIScreen.main.bounds
+    let width = (screenBounds.width - 2 * edgePadding)
+    let height = width 
+    
+    let bounds = CGRect(origin: .zero, size: CGSize(width: width, height: height))
+    self.numPadView = NumberPadView(bounds: bounds)
+    self.numPadView.translatesAutoresizingMaskIntoConstraints = false
+    
+    self.view.addSubview(numPadView)
+    
+    NSLayoutConstraint.activate([
+      numPadView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      numPadView.widthAnchor.constraint(equalToConstant: width),
+      numPadView.heightAnchor.constraint(equalToConstant: height),
+      numPadView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+    ])
   }
-  
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
