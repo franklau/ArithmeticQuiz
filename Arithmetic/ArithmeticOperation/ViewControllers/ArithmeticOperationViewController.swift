@@ -47,6 +47,14 @@ class ArithmeticOperationViewController: UIViewController {
     return label
   }()
   
+  private lazy var correctWrongLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+    label.textColor = UIColor.black
+    return label
+  }()
+  
   private var numPadView: NumberPadView!
   
   init(operation: ArithmeticOperation) {
@@ -56,18 +64,28 @@ class ArithmeticOperationViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     view.layer.insertSublayer(gradient, at: 0)
     
     let (operationView, result) = makeOperationViewAndResult(operation: operation, level: level)
     self.operationView = operationView
     
     self.result = result
+    self.correctWrongLabel.text = "Correct: 0 Wrong: 0"
+
+    view.addSubview(correctWrongLabel)
     view.addSubview(operationView)
     view.addSubview(dividerLine)
     
     NSLayoutConstraint.activate([
-      operationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+      
+      correctWrongLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+      correctWrongLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+      correctWrongLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      
+      operationView.topAnchor.constraint(equalTo: correctWrongLabel.safeAreaLayoutGuide.bottomAnchor, constant: 10),
       operationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      
       dividerLine.topAnchor.constraint(equalTo: operationView.bottomAnchor, constant: 10),
       dividerLine.leadingAnchor.constraint(equalTo: operationView.leadingAnchor, constant: -10),
       dividerLine.trailingAnchor.constraint(equalTo: operationView.trailingAnchor, constant: 10)
@@ -131,11 +149,16 @@ extension ArithmeticOperationViewController: NumberPadViewDelegate {
   }
   
   func numberPadDidEnter() {
+    // TODO: overlay large checkmark or x
+    self.correctWrongLabel.text = "Correct: 0 Wrong: 0"
+    self.view.isUserInteractionEnabled = false
     enteredResult = ""
     let configuration = UIImage.SymbolConfiguration(font: UIConstants.arithmeticOperationFont)
     let symbol = operation.getSymbolFor(configuration: configuration)
     let (lhs, rhs) = operation.generateNumbersForLevel(level: .easy)
-    operationView.update(lhs: String(lhs), rhs: String(rhs), symbol: symbol)
+    operationView.update(lhs: String(lhs), rhs: String(rhs), symbol: symbol) {
+      self.view.isUserInteractionEnabled = true
+    }
   }
 }
 
