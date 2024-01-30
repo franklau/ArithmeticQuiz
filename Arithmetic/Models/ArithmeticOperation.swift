@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum ArithmeticOperation {
+enum ArithmeticOperation: String {
   
   case add
   case subtract
@@ -20,7 +20,7 @@ enum ArithmeticOperation {
     case outline
   }
   
-  enum Level {
+  enum Level: String {
     case easy
     case medium
     case hard

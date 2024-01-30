@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7um-c8-pSi">
-                    <rect key="frame" x="45" y="99" width="302" height="426"/>
+                    <rect key="frame" x="45" y="98.999999999999972" width="302" height="511.33333333333326"/>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -29,7 +29,7 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7um-c8-pSi" secondAttribute="trailing" constant="46" id="1PY-YM-C6T"/>
                 <constraint firstItem="7um-c8-pSi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="KyE-9k-6mD"/>
-                <constraint firstItem="7um-c8-pSi" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="S31-Sy-AxW"/>
+                <constraint firstItem="7um-c8-pSi" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.6" id="S31-Sy-AxW"/>
                 <constraint firstItem="7um-c8-pSi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="45" id="z7c-Ml-ANX"/>
             </constraints>
             <point key="canvasLocation" x="119.84732824427481" y="-11.267605633802818"/>

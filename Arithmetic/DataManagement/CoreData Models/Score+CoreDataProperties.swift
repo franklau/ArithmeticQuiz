@@ -19,6 +19,9 @@ extension Score {
     @NSManaged public var numCorrect: Int64
     @NSManaged public var numWrong: Int64
     @NSManaged public var duration: Int64
+    @NSManaged public var type: String?
+    @NSManaged public var dateCreated: Date
+    @NSManaged public var level: String
 
 }
 

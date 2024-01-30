@@ -18,9 +18,10 @@ extension QuizSettings {
 
     @NSManaged public var level: String?
     @NSManaged public var durationInSeconds: Int64
+    @NSManaged public var type: String?
 
 }
 
 extension QuizSettings : Identifiable {
-
+  
 }

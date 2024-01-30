@@ -11,7 +11,7 @@ import UIKit
 class HomeButton: UIButton {
   
   private let cornerRadius = 12.0
-  private let buttonBGColor = UIColor.primaryButton
+  private var buttonBGColor = UIColor.primaryButton
   private let font = UIFont.systemFont(ofSize: 30, weight: .bold)
   
   private lazy var shadowLayer = {
@@ -23,8 +23,9 @@ class HomeButton: UIButton {
     return layer
   }()
   
-  init(title: String, image: UIImage) {
+  init(title: String, image: UIImage, buttonBGColor: UIColor = UIColor.primaryButton) {
     super.init(frame: .zero)
+    self.buttonBGColor = buttonBGColor
     self.setTitle(title, for: .normal)
     self.setImage(image, for: .normal)
     self.titleLabel?.font = font
@@ -36,6 +37,7 @@ class HomeButton: UIButton {
   }
   
   required init?(coder: NSCoder) {
+    buttonBGColor = UIColor.black
     super.init(coder: coder)
   }
   override func layoutSubviews() {

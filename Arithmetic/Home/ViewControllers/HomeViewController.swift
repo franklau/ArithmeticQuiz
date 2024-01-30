@@ -23,6 +23,15 @@ class HomeViewController: UIViewController {
     CAGradientLayer.makeGradientLayer()
   }()
   
+  private lazy var settingsButton: HomeButton = {
+    let config = UIImage.SymbolConfiguration(font: UIConstants.homePageButtonFont)
+    let image = UIImage(systemName: "gear", withConfiguration: config)!
+    let button = HomeButton(title: "Setting", image: image, buttonBGColor: UIColor.secondaryButton)
+    button.addTarget(self, action: #selector(settingsTapped), for: .touchUpInside)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     operations.forEach {
@@ -32,6 +41,7 @@ class HomeViewController: UIViewController {
       button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
       menuStackView.addArrangedSubview(button)
     }
+    menuStackView.addArrangedSubview(settingsButton)
     view.layer.insertSublayer(gradient, at: 0)
     navigationItem.title = "Menu"
   }
@@ -41,6 +51,10 @@ class HomeViewController: UIViewController {
     guard let index = index else { return }
     let operation = operations[index]
     delegate?.userSelectedOperation(operation: operation)
+  }
+  
+  @objc func settingsTapped() {
+      print("settings")
   }
   
   init() {

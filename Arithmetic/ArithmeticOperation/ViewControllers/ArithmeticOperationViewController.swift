@@ -18,7 +18,9 @@ class ArithmeticOperationViewController: UIViewController {
 
   let operation: ArithmeticOperation
   let level = ArithmeticOperation.Level.easy
-  var totalTimeInSeconds = 300.0
+  var totalTimeInSeconds = 20.0
+  
+  let context = CoreDataManager.shared.mainContent
   
   let edgePadding = 20.0
   var operationView: OperationView!
@@ -230,6 +232,17 @@ class ArithmeticOperationViewController: UIViewController {
       circularProgressView.updateProgress(0)
       countdownLabel.text = getCountdownTextForSecondsRemaining(0.0)
       delegate?.arithmeticOperationViewControllerDidFinishWithNumCorrect(numCorrect, numWrong: numWrong)
+      
+      let _ = Score.createScore(type: operation.rawValue,
+                                numCorrect: numCorrect, numWrong:
+                                numWrong,
+                                duration: Int(totalTimeInSeconds),
+                                into: context)
+      do {
+        try context.save()
+      } catch let error {
+        print("error \(error)")
+      }
     }
   }
   
