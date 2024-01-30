@@ -34,6 +34,11 @@
 		015F1A672B66E1760086A8DF /* NumberDigitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015F1A652B66E1760086A8DF /* NumberDigitCell.xib */; };
 		0176D39E2B686B7D00621B1A /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D39D2B686B7D00621B1A /* RingLayer.swift */; };
 		0176D3A02B68713A00621B1A /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D39F2B68713A00621B1A /* CircularProgressView.swift */; };
+		0176D3A32B698E9E00621B1A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D3A22B698E9E00621B1A /* CoreDataManager.swift */; };
+		0176D3B82B69944800621B1A /* QuizSettings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D3B42B69944800621B1A /* QuizSettings+CoreDataClass.swift */; };
+		0176D3B92B69944800621B1A /* QuizSettings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D3B52B69944800621B1A /* QuizSettings+CoreDataProperties.swift */; };
+		0176D3BA2B69944800621B1A /* Score+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D3B62B69944800621B1A /* Score+CoreDataClass.swift */; };
+		0176D3BB2B69944800621B1A /* Score+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D3B72B69944800621B1A /* Score+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +90,11 @@
 		015F1A652B66E1760086A8DF /* NumberDigitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberDigitCell.xib; sourceTree = "<group>"; };
 		0176D39D2B686B7D00621B1A /* RingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
 		0176D39F2B68713A00621B1A /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		0176D3A22B698E9E00621B1A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		0176D3B42B69944800621B1A /* QuizSettings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuizSettings+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0176D3B52B69944800621B1A /* QuizSettings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuizSettings+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0176D3B62B69944800621B1A /* Score+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Score+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0176D3B72B69944800621B1A /* Score+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Score+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +145,7 @@
 		015F19FF2B64979F0086A8DF /* Arithmetic */ = {
 			isa = PBXGroup;
 			children = (
+				0176D3A12B698E7A00621B1A /* DataManagement */,
 				015F1A552B65AC490086A8DF /* Constants */,
 				015F1A452B64CE520086A8DF /* Extensions */,
 				015F1A422B64BD610086A8DF /* Models */,
@@ -259,6 +270,18 @@
 				015F1A562B65AC5E0086A8DF /* UIConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		0176D3A12B698E7A00621B1A /* DataManagement */ = {
+			isa = PBXGroup;
+			children = (
+				0176D3B42B69944800621B1A /* QuizSettings+CoreDataClass.swift */,
+				0176D3B52B69944800621B1A /* QuizSettings+CoreDataProperties.swift */,
+				0176D3B62B69944800621B1A /* Score+CoreDataClass.swift */,
+				0176D3B72B69944800621B1A /* Score+CoreDataProperties.swift */,
+				0176D3A22B698E9E00621B1A /* CoreDataManager.swift */,
+			);
+			path = DataManagement;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,6 +419,7 @@
 			files = (
 				015F1A0B2B64979F0086A8DF /* Arithmetic.xcdatamodeld in Sources */,
 				0176D39E2B686B7D00621B1A /* RingLayer.swift in Sources */,
+				0176D3B82B69944800621B1A /* QuizSettings+CoreDataClass.swift in Sources */,
 				0176D3A02B68713A00621B1A /* CircularProgressView.swift in Sources */,
 				015F1A522B6570920086A8DF /* UIStackView+Create.swift in Sources */,
 				015F1A3B2B64B2160086A8DF /* Coordinator.swift in Sources */,
@@ -406,12 +430,16 @@
 				015F1A612B66D5840086A8DF /* NumberPadView.swift in Sources */,
 				015F1A542B6579B70086A8DF /* CAGradientLayer+Theme.swift in Sources */,
 				015F1A372B6498110086A8DF /* HomeButton.swift in Sources */,
+				0176D3B92B69944800621B1A /* QuizSettings+CoreDataProperties.swift in Sources */,
+				0176D3BA2B69944800621B1A /* Score+CoreDataClass.swift in Sources */,
 				015F1A032B64979F0086A8DF /* SceneDelegate.swift in Sources */,
+				0176D3BB2B69944800621B1A /* Score+CoreDataProperties.swift in Sources */,
 				015F1A4E2B6569E70086A8DF /* ArithmeticOperationViewController.swift in Sources */,
 				015F1A402B64BB960086A8DF /* HomeViewController.swift in Sources */,
 				015F1A632B66D5CC0086A8DF /* UIView+Helpers.swift in Sources */,
 				015F1A3D2B64B2430086A8DF /* AppCoordinator.swift in Sources */,
 				015F1A442B64BD770086A8DF /* ArithmeticOperation.swift in Sources */,
+				0176D3A32B698E9E00621B1A /* CoreDataManager.swift in Sources */,
 				015F1A662B66E1760086A8DF /* NumberDigitCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
