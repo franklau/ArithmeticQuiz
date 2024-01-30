@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
+protocol ArithmeticOperationViewControllerDelegate: AnyObject {
+  func arithmeticOperationViewControllerDidFinishWithNumCorrect(_ numCorrect: Int, numWrong: Int)
+}
+
 class ArithmeticOperationViewController: UIViewController {
+  
+  weak var delegate: ArithmeticOperationViewControllerDelegate?
 
   let operation: ArithmeticOperation
   let level = ArithmeticOperation.Level.easy
@@ -77,6 +83,12 @@ class ArithmeticOperationViewController: UIViewController {
     return progressView
   }()
   
+  private lazy var countdownLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+  }()
+  
   private var numPadView: NumberPadView!
   
   init(operation: ArithmeticOperation) {
@@ -100,6 +112,9 @@ class ArithmeticOperationViewController: UIViewController {
     view.addSubview(dividerLine)
     
     view.addSubview(circularProgressView)
+    view.addSubview(countdownLabel)
+    
+    countdownLabel.text = getCountdownTextForSecondsRemaining(totalTimeInSeconds)
         
     startTime = Date()
     timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
@@ -124,7 +139,10 @@ class ArithmeticOperationViewController: UIViewController {
       circularProgressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
       circularProgressView.topAnchor.constraint(equalTo: operationView.topAnchor),
       circularProgressView.widthAnchor.constraint(equalToConstant: 50),
-      circularProgressView.heightAnchor.constraint(equalToConstant: 50)
+      circularProgressView.heightAnchor.constraint(equalToConstant: 50),
+      
+      countdownLabel.centerXAnchor.constraint(equalTo: circularProgressView.centerXAnchor),
+      countdownLabel.topAnchor.constraint(equalTo: circularProgressView.bottomAnchor, constant: 10)
     ])
     
     view.addSubview(answerLabel)
@@ -175,13 +193,24 @@ class ArithmeticOperationViewController: UIViewController {
   
   @objc func timerElaspsed() {
     let timeElapsed = Date().timeIntervalSince(startTime)
+    let totalTimeInSeconds = CGFloat(totalTimeInSeconds)
     if totalTimeInSeconds > timeElapsed {
-      let fractionalProgress = (totalTimeInSeconds - timeElapsed) / totalTimeInSeconds
+      let timeRemaining = totalTimeInSeconds - timeElapsed
+      let fractionalProgress = timeRemaining / totalTimeInSeconds
       circularProgressView.updateProgress(fractionalProgress)
+      countdownLabel.text = getCountdownTextForSecondsRemaining(timeRemaining)
     } else {
       clearTimer()
       circularProgressView.updateProgress(0)
+      countdownLabel.text = getCountdownTextForSecondsRemaining(0.0)
     }
+  }
+  
+  private func getCountdownTextForSecondsRemaining(_ secondsRemaining: Double) -> String {
+    let secondsRemaining = Int(secondsRemaining)
+    let minute = secondsRemaining / 60
+    let seconds = secondsRemaining % 60
+    return String(String(format: "%02d : %02d", minute, seconds))
   }
   
   private func clearTimer() {
@@ -206,7 +235,6 @@ extension ArithmeticOperationViewController: NumberPadViewDelegate {
   
   func numberPadDidEnter() {
     // TODO: overlay large checkmark or x
-    
     if Int(enteredResult) == result {
       numCorrect += 1
     } else {
