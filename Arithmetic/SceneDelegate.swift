@@ -48,7 +48,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let barButtonAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
     barButtonAppearance.tintColor = UIColor.navTextColor
 
-    
     customNavBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.navTextColor, .font: UIFont.systemFont(ofSize: 25, weight: .bold)]
     return customNavBarAppearance
   }

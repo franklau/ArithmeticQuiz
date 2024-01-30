@@ -189,6 +189,11 @@ class ArithmeticOperationViewController: UIViewController {
       numPadView.heightAnchor.constraint(equalToConstant: height),
       numPadView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
     ])
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Skip",
+                                                        style: .plain,
+                                                        target: self,
+                                                        action: #selector(skipTapped))
   }
   
   required init?(coder: NSCoder) {
@@ -228,6 +233,10 @@ class ArithmeticOperationViewController: UIViewController {
     }
   }
   
+  @objc func skipTapped() {
+    showNextExpression()
+  }
+  
   private func getCountdownTextForSecondsRemaining(_ secondsRemaining: Double) -> String {
     let secondsRemaining = Int(secondsRemaining)
     let minute = secondsRemaining / 60
@@ -263,6 +272,10 @@ extension ArithmeticOperationViewController: NumberPadViewDelegate {
     } else {
       numWrong += 1
     }
+    showNextExpression()
+  }
+  
+  func showNextExpression() {
     self.view.isUserInteractionEnabled = false
     enteredResult = ""
     let configuration = UIImage.SymbolConfiguration(font: UIConstants.arithmeticOperationFont)
