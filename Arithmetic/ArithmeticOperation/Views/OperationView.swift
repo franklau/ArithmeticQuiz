@@ -50,7 +50,6 @@ class OperationView: UIStackView {
     imageView.image = symbol
     
     UIView.animate(withDuration: 0.5, delay: 0, animations: {
-      
       self.showUIElements(true)
       tempView.alpha = 0
     }, completion: { _ in

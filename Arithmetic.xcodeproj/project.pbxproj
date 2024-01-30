@@ -32,6 +32,8 @@
 		015F1A632B66D5CC0086A8DF /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A622B66D5CC0086A8DF /* UIView+Helpers.swift */; };
 		015F1A662B66E1760086A8DF /* NumberDigitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A642B66E1760086A8DF /* NumberDigitCell.swift */; };
 		015F1A672B66E1760086A8DF /* NumberDigitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015F1A652B66E1760086A8DF /* NumberDigitCell.xib */; };
+		0176D39E2B686B7D00621B1A /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D39D2B686B7D00621B1A /* RingLayer.swift */; };
+		0176D3A02B68713A00621B1A /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D39F2B68713A00621B1A /* CircularProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		015F1A622B66D5CC0086A8DF /* UIView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
 		015F1A642B66E1760086A8DF /* NumberDigitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberDigitCell.swift; sourceTree = "<group>"; };
 		015F1A652B66E1760086A8DF /* NumberDigitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberDigitCell.xib; sourceTree = "<group>"; };
+		0176D39D2B686B7D00621B1A /* RingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
+		0176D39F2B68713A00621B1A /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +239,8 @@
 				015F1A602B66D5840086A8DF /* NumberPadView.swift */,
 				015F1A642B66E1760086A8DF /* NumberDigitCell.swift */,
 				015F1A652B66E1760086A8DF /* NumberDigitCell.xib */,
+				0176D39D2B686B7D00621B1A /* RingLayer.swift */,
+				0176D39F2B68713A00621B1A /* CircularProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -389,6 +395,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				015F1A0B2B64979F0086A8DF /* Arithmetic.xcdatamodeld in Sources */,
+				0176D39E2B686B7D00621B1A /* RingLayer.swift in Sources */,
+				0176D3A02B68713A00621B1A /* CircularProgressView.swift in Sources */,
 				015F1A522B6570920086A8DF /* UIStackView+Create.swift in Sources */,
 				015F1A3B2B64B2160086A8DF /* Coordinator.swift in Sources */,
 				015F1A572B65AC5E0086A8DF /* UIConstants.swift in Sources */,

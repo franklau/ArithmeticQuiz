@@ -12,6 +12,8 @@ class ArithmeticOperationViewController: UIViewController {
 
   let operation: ArithmeticOperation
   let level = ArithmeticOperation.Level.easy
+  var totalTimeInSeconds = 300.0
+  
   let edgePadding = 20.0
   var operationView: OperationView!
   
@@ -21,6 +23,20 @@ class ArithmeticOperationViewController: UIViewController {
       answerLabel.text = enteredResult
     }
   }
+  
+  var numCorrect: Int = 0 {
+    didSet {
+      updateNumCorrectNumWrong()
+    }
+  }
+  var numWrong: Int = 0 {
+    didSet {
+      updateNumCorrectNumWrong()
+    }
+  }
+  
+  var timer: Timer?
+  var startTime: Date!
   
   private lazy var gradient = {
     CAGradientLayer.makeGradientLayer()
@@ -55,6 +71,12 @@ class ArithmeticOperationViewController: UIViewController {
     return label
   }()
   
+  private lazy var circularProgressView = {
+   let progressView = CircularProgressView()
+    progressView.translatesAutoresizingMaskIntoConstraints = false
+    return progressView
+  }()
+  
   private var numPadView: NumberPadView!
   
   init(operation: ArithmeticOperation) {
@@ -77,6 +99,15 @@ class ArithmeticOperationViewController: UIViewController {
     view.addSubview(operationView)
     view.addSubview(dividerLine)
     
+    view.addSubview(circularProgressView)
+        
+    startTime = Date()
+    timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
+                                 selector: #selector(timerElaspsed),
+                                 userInfo: nil,
+                                 repeats: true)
+    
+    
     NSLayoutConstraint.activate([
       
       correctWrongLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -88,7 +119,12 @@ class ArithmeticOperationViewController: UIViewController {
       
       dividerLine.topAnchor.constraint(equalTo: operationView.bottomAnchor, constant: 10),
       dividerLine.leadingAnchor.constraint(equalTo: operationView.leadingAnchor, constant: -10),
-      dividerLine.trailingAnchor.constraint(equalTo: operationView.trailingAnchor, constant: 10)
+      dividerLine.trailingAnchor.constraint(equalTo: operationView.trailingAnchor, constant: 10),
+      
+      circularProgressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+      circularProgressView.topAnchor.constraint(equalTo: operationView.topAnchor),
+      circularProgressView.widthAnchor.constraint(equalToConstant: 50),
+      circularProgressView.heightAnchor.constraint(equalToConstant: 50)
     ])
     
     view.addSubview(answerLabel)
@@ -136,6 +172,26 @@ class ArithmeticOperationViewController: UIViewController {
     let result = operation.evaluate(lhs: lhs, rhs: rhs)
     return (operationView, result)
   }
+  
+  @objc func timerElaspsed() {
+    let timeElapsed = Date().timeIntervalSince(startTime)
+    if totalTimeInSeconds > timeElapsed {
+      let fractionalProgress = (totalTimeInSeconds - timeElapsed) / totalTimeInSeconds
+      circularProgressView.updateProgress(fractionalProgress)
+    } else {
+      clearTimer()
+      circularProgressView.updateProgress(0)
+    }
+  }
+  
+  private func clearTimer() {
+    timer?.invalidate()
+    timer = nil
+  }
+  
+  deinit {
+    clearTimer()
+  }
 }
 
 extension ArithmeticOperationViewController: NumberPadViewDelegate {
@@ -150,15 +206,25 @@ extension ArithmeticOperationViewController: NumberPadViewDelegate {
   
   func numberPadDidEnter() {
     // TODO: overlay large checkmark or x
-    self.correctWrongLabel.text = "Correct: 0 Wrong: 0"
+    
+    if Int(enteredResult) == result {
+      numCorrect += 1
+    } else {
+      numWrong += 1
+    }
     self.view.isUserInteractionEnabled = false
     enteredResult = ""
     let configuration = UIImage.SymbolConfiguration(font: UIConstants.arithmeticOperationFont)
     let symbol = operation.getSymbolFor(configuration: configuration)
     let (lhs, rhs) = operation.generateNumbersForLevel(level: .easy)
     operationView.update(lhs: String(lhs), rhs: String(rhs), symbol: symbol) {
+      self.result = self.operation.evaluate(lhs: lhs, rhs: rhs)
       self.view.isUserInteractionEnabled = true
     }
+  }
+  
+  private func updateNumCorrectNumWrong() {
+    self.correctWrongLabel.text = "Correct: \(numCorrect) Wrong: \(numWrong)"
   }
 }
 
