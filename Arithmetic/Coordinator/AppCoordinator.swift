@@ -23,12 +23,19 @@ class AppCoordinator: Coordinator {
     window.rootViewController = rootViewController
     window.makeKeyAndVisible()
   }
-  
 }
 
 extension AppCoordinator: HomeViewControllerDelegate {
   func userSelectedOperation(operation: ArithmeticOperation) {
     let arithmeticOperationViewController = ArithmeticOperationViewController(operation: operation)
+    arithmeticOperationViewController.delegate = self
     rootViewController.pushViewController(arithmeticOperationViewController, animated: true)
+  }
+}
+
+extension AppCoordinator: ArithmeticOperationViewControllerDelegate {
+  func arithmeticOperationViewControllerDidFinishWithNumCorrect(_ numCorrect: Int, numWrong: Int) {
+    // TODO: create game results screen
+    rootViewController.popViewController(animated: false)
   }
 }

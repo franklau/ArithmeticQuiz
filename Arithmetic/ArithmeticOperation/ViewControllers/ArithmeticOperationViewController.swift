@@ -27,6 +27,7 @@ class ArithmeticOperationViewController: UIViewController {
   var enteredResult = "" {
     didSet {
       answerLabel.text = enteredResult
+      clearButton.alpha = enteredResult == "" ? 0 : 0.5
     }
   }
   
@@ -43,6 +44,7 @@ class ArithmeticOperationViewController: UIViewController {
   
   var timer: Timer?
   var startTime: Date!
+  private var numPadView: NumberPadView!
   
   private lazy var gradient = {
     CAGradientLayer.makeGradientLayer()
@@ -89,7 +91,22 @@ class ArithmeticOperationViewController: UIViewController {
     return label
   }()
   
-  private var numPadView: NumberPadView!
+  private lazy var clearButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    let configuration = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 20, weight: .bold))
+    let image = UIImage(systemName: "xmark.circle.fill", withConfiguration: configuration)
+    button.setImage(image, for: .normal)
+    button.tintColor = UIColor.black
+    button.alpha = 0
+    button.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
+    return button
+  }()
+  
+  @objc func clearTapped() {
+    enteredResult = ""
+  }
+  
   
   init(operation: ArithmeticOperation) {
     self.operation = operation
@@ -98,7 +115,10 @@ class ArithmeticOperationViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    setupUI()
+  }
+  
+  private func setupUI() {
     view.layer.insertSublayer(gradient, at: 0)
     
     let (operationView, result) = makeOperationViewAndResult(operation: operation, level: level)
@@ -121,7 +141,6 @@ class ArithmeticOperationViewController: UIViewController {
                                  selector: #selector(timerElaspsed),
                                  userInfo: nil,
                                  repeats: true)
-    
     
     NSLayoutConstraint.activate([
       
@@ -146,9 +165,12 @@ class ArithmeticOperationViewController: UIViewController {
     ])
     
     view.addSubview(answerLabel)
+    view.addSubview(clearButton)
     NSLayoutConstraint.activate([
       answerLabel.trailingAnchor.constraint(equalTo: dividerLine.trailingAnchor),
-      answerLabel.topAnchor.constraint(equalTo: dividerLine.topAnchor, constant: 20)
+      answerLabel.topAnchor.constraint(equalTo: dividerLine.topAnchor, constant: 20),
+      clearButton.leadingAnchor.constraint(equalTo: answerLabel.trailingAnchor, constant: 10),
+      clearButton.centerYAnchor.constraint(equalTo: answerLabel.centerYAnchor)
     ])
         
     let screenBounds = UIScreen.main.bounds
@@ -203,6 +225,7 @@ class ArithmeticOperationViewController: UIViewController {
       clearTimer()
       circularProgressView.updateProgress(0)
       countdownLabel.text = getCountdownTextForSecondsRemaining(0.0)
+      delegate?.arithmeticOperationViewControllerDidFinishWithNumCorrect(numCorrect, numWrong: numWrong)
     }
   }
   
@@ -255,4 +278,3 @@ extension ArithmeticOperationViewController: NumberPadViewDelegate {
     self.correctWrongLabel.text = "Correct: \(numCorrect) Wrong: \(numWrong)"
   }
 }
-
