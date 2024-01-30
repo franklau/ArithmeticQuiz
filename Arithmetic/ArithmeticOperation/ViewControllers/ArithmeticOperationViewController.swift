@@ -116,6 +116,11 @@ class ArithmeticOperationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
+    startTime = Date()
+    timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
+                                 selector: #selector(timerElaspsed),
+                                 userInfo: nil,
+                                 repeats: true)
   }
   
   private func setupUI() {
@@ -136,12 +141,6 @@ class ArithmeticOperationViewController: UIViewController {
     
     countdownLabel.text = getCountdownTextForSecondsRemaining(totalTimeInSeconds)
         
-    startTime = Date()
-    timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
-                                 selector: #selector(timerElaspsed),
-                                 userInfo: nil,
-                                 repeats: true)
-    
     NSLayoutConstraint.activate([
       
       correctWrongLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -249,11 +248,12 @@ class ArithmeticOperationViewController: UIViewController {
 extension ArithmeticOperationViewController: NumberPadViewDelegate {
   func numberPadDidSelect(number: Int) {
     let maxDigits = 10
-    if enteredResult.count < maxDigits {
+    
+    if enteredResult == "0" {
+      enteredResult = String(number)
+    } else if enteredResult.count < maxDigits {
       enteredResult += String(number)
     }
-    
-    print("entered result \(enteredResult)")
   }
   
   func numberPadDidEnter() {
