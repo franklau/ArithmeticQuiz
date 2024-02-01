@@ -10,13 +10,15 @@ import SwiftUI
 
 class SettingsOptionsViewController: UIViewController {
 
+  var viewModel = SettingsOptionsViewModel(level: .easy, duration: 20)
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
   
   private func setupUI() {
-    let settingOptionsView = SettingOptionsView()
+    let settingOptionsView = SettingOptionsView(viewModel: viewModel)
     let hostingVC = UIHostingController(rootView: settingOptionsView)
     let hostView = hostingVC.view!
     hostView.translatesAutoresizingMaskIntoConstraints = false

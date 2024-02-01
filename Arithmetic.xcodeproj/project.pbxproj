@@ -43,6 +43,7 @@
 		0176D3C82B6998B500621B1A /* Score+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D3C62B6998B500621B1A /* Score+CoreDataProperties.swift */; };
 		01F201BD2B6B1C460052375E /* SettingsOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F201BC2B6B1C460052375E /* SettingsOptionsViewController.swift */; };
 		01F201BF2B6B1C550052375E /* SettingOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F201BE2B6B1C550052375E /* SettingOptionsView.swift */; };
+		01F201C22B6B24340052375E /* SettingsOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F201C12B6B24340052375E /* SettingsOptionsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		0176D3C62B6998B500621B1A /* Score+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Score+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		01F201BC2B6B1C460052375E /* SettingsOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionsViewController.swift; sourceTree = "<group>"; };
 		01F201BE2B6B1C550052375E /* SettingOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionsView.swift; sourceTree = "<group>"; };
+		01F201C12B6B24340052375E /* SettingsOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 		01615CD92B6ACDC300C9553F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				01F201C02B6B23FB0052375E /* View Models */,
 				01615CDA2B6ACF4A00C9553F /* View Controllers */,
 			);
 			path = Settings;
@@ -318,6 +321,14 @@
 				0176D3BF2B69956200621B1A /* QuizSettings+CoreDataProperties.swift */,
 			);
 			path = "CoreData Models";
+			sourceTree = "<group>";
+		};
+		01F201C02B6B23FB0052375E /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				01F201C12B6B24340052375E /* SettingsOptionsViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,6 +486,7 @@
 				015F1A632B66D5CC0086A8DF /* UIView+Helpers.swift in Sources */,
 				0176D3C82B6998B500621B1A /* Score+CoreDataProperties.swift in Sources */,
 				015F1A3D2B64B2430086A8DF /* AppCoordinator.swift in Sources */,
+				01F201C22B6B24340052375E /* SettingsOptionsViewModel.swift in Sources */,
 				015F1A442B64BD770086A8DF /* ArithmeticOperation.swift in Sources */,
 				0176D3C02B69956200621B1A /* Score+CoreDataClass.swift in Sources */,
 				01F201BF2B6B1C550052375E /* SettingOptionsView.swift in Sources */,

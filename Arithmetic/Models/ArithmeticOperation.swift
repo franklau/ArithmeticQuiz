@@ -24,7 +24,12 @@ enum ArithmeticOperation: String, Identifiable {
     case outline
   }
   
-  enum Level: String {
+  enum Level: String, Identifiable {
+    
+    var id: Self {
+      return self
+    }
+    
     case easy
     case medium
     case hard
