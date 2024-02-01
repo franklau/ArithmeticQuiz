@@ -41,6 +41,8 @@
 		0176D3C22B69956200621B1A /* QuizSettings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D3BE2B69956200621B1A /* QuizSettings+CoreDataClass.swift */; };
 		0176D3C32B69956200621B1A /* QuizSettings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D3BF2B69956200621B1A /* QuizSettings+CoreDataProperties.swift */; };
 		0176D3C82B6998B500621B1A /* Score+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D3C62B6998B500621B1A /* Score+CoreDataProperties.swift */; };
+		01F201BD2B6B1C460052375E /* SettingsOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F201BC2B6B1C460052375E /* SettingsOptionsViewController.swift */; };
+		01F201BF2B6B1C550052375E /* SettingOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F201BE2B6B1C550052375E /* SettingOptionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		0176D3BE2B69956200621B1A /* QuizSettings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuizSettings+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0176D3BF2B69956200621B1A /* QuizSettings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuizSettings+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0176D3C62B6998B500621B1A /* Score+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Score+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		01F201BC2B6B1C460052375E /* SettingsOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionsViewController.swift; sourceTree = "<group>"; };
+		01F201BE2B6B1C550052375E /* SettingOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +294,8 @@
 			children = (
 				01615CDB2B6ACF7900C9553F /* SettingsViewController.swift */,
 				01615CDD2B6AD28000C9553F /* SettingsView.swift */,
+				01F201BC2B6B1C460052375E /* SettingsOptionsViewController.swift */,
+				01F201BE2B6B1C550052375E /* SettingOptionsView.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 				015F1A542B6579B70086A8DF /* CAGradientLayer+Theme.swift in Sources */,
 				015F1A372B6498110086A8DF /* HomeButton.swift in Sources */,
 				015F1A032B64979F0086A8DF /* SceneDelegate.swift in Sources */,
+				01F201BD2B6B1C460052375E /* SettingsOptionsViewController.swift in Sources */,
 				015F1A4E2B6569E70086A8DF /* ArithmeticOperationViewController.swift in Sources */,
 				015F1A402B64BB960086A8DF /* HomeViewController.swift in Sources */,
 				015F1A632B66D5CC0086A8DF /* UIView+Helpers.swift in Sources */,
@@ -470,6 +477,7 @@
 				015F1A3D2B64B2430086A8DF /* AppCoordinator.swift in Sources */,
 				015F1A442B64BD770086A8DF /* ArithmeticOperation.swift in Sources */,
 				0176D3C02B69956200621B1A /* Score+CoreDataClass.swift in Sources */,
+				01F201BF2B6B1C550052375E /* SettingOptionsView.swift in Sources */,
 				0176D3A32B698E9E00621B1A /* CoreDataManager.swift in Sources */,
 				015F1A662B66E1760086A8DF /* NumberDigitCell.swift in Sources */,
 				01615CDE2B6AD28000C9553F /* SettingsView.swift in Sources */,

@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct SettingsView: View {
-      
-  var operations: [ArithmeticOperation] = [.add, .subtract, .multiply, .divide]
+    
+    var tapHandler: (ArithmeticOperation) -> Void
+  
+    var operations: [ArithmeticOperation] = [.add, .subtract, .multiply, .divide]
+  
     var body: some View {
       VStack(alignment: .leading, spacing: 0) {
         Text("Please select an option")
@@ -19,7 +22,7 @@ struct SettingsView: View {
           ForEach(operations) { operation in
             VStack(alignment: .leading, spacing: 0) {
               Button {
-                print("button")
+                tapHandler(operation)
               } label: {
                 HStack { // use HStack so tap area of button is the width of the gray
                   Text(operation.buttonText)
@@ -46,6 +49,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+      let tapHandler: (ArithmeticOperation) -> Void = { _ in }
+      SettingsView(tapHandler: tapHandler)
     }
 }

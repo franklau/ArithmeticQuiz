@@ -34,6 +34,7 @@ extension AppCoordinator: HomeViewControllerDelegate {
   
   func userSelectedSettings() {
     let settingsVC = SettingsViewController()
+    settingsVC.delegate = self
     rootViewController.pushViewController(settingsVC, animated: true)
   }
 }
@@ -42,5 +43,13 @@ extension AppCoordinator: ArithmeticOperationViewControllerDelegate {
   func arithmeticOperationViewControllerDidFinishWithNumCorrect(_ numCorrect: Int, numWrong: Int) {
     // TODO: create game results screen
     rootViewController.popViewController(animated: false)
+  }
+}
+
+extension AppCoordinator: SettingsViewControllerDelegate {
+  func userSelectedOperationSetting(operation: ArithmeticOperation) {
+    let settingsOptionsVC = SettingsOptionsViewController()
+    rootViewController.pushViewController(settingsOptionsVC, animated: true)
+//    print("operation \(operation)")
   }
 }

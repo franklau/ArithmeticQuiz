@@ -10,9 +10,10 @@ import UIKit
 
 enum ArithmeticOperation: String, Identifiable {
   
-  var id: Self {
+  var id: Self { // for SwiftUI
     return self
   }
+  
   case add
   case subtract
   case multiply
