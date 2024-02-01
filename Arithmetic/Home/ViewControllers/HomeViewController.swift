@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeViewControllerDelegate: AnyObject {
   func userSelectedOperation(operation: ArithmeticOperation)
+  func userSelectedSettings()
 }
 
 class HomeViewController: UIViewController {
@@ -54,7 +55,7 @@ class HomeViewController: UIViewController {
   }
   
   @objc func settingsTapped() {
-      print("settings")
+    delegate?.userSelectedSettings()
   }
   
   init() {

@@ -8,8 +8,11 @@
 import Foundation
 import UIKit
 
-enum ArithmeticOperation: String {
+enum ArithmeticOperation: String, Identifiable {
   
+  var id: Self {
+    return self
+  }
   case add
   case subtract
   case multiply

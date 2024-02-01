@@ -31,6 +31,11 @@ extension AppCoordinator: HomeViewControllerDelegate {
     arithmeticOperationViewController.delegate = self
     rootViewController.pushViewController(arithmeticOperationViewController, animated: true)
   }
+  
+  func userSelectedSettings() {
+    let settingsVC = SettingsViewController()
+    rootViewController.pushViewController(settingsVC, animated: true)
+  }
 }
 
 extension AppCoordinator: ArithmeticOperationViewControllerDelegate {

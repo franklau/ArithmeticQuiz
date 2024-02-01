@@ -32,6 +32,8 @@
 		015F1A632B66D5CC0086A8DF /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A622B66D5CC0086A8DF /* UIView+Helpers.swift */; };
 		015F1A662B66E1760086A8DF /* NumberDigitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A642B66E1760086A8DF /* NumberDigitCell.swift */; };
 		015F1A672B66E1760086A8DF /* NumberDigitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015F1A652B66E1760086A8DF /* NumberDigitCell.xib */; };
+		01615CDC2B6ACF7900C9553F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01615CDB2B6ACF7900C9553F /* SettingsViewController.swift */; };
+		01615CDE2B6AD28000C9553F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01615CDD2B6AD28000C9553F /* SettingsView.swift */; };
 		0176D39E2B686B7D00621B1A /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D39D2B686B7D00621B1A /* RingLayer.swift */; };
 		0176D3A02B68713A00621B1A /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D39F2B68713A00621B1A /* CircularProgressView.swift */; };
 		0176D3A32B698E9E00621B1A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176D3A22B698E9E00621B1A /* CoreDataManager.swift */; };
@@ -88,6 +90,8 @@
 		015F1A622B66D5CC0086A8DF /* UIView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
 		015F1A642B66E1760086A8DF /* NumberDigitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberDigitCell.swift; sourceTree = "<group>"; };
 		015F1A652B66E1760086A8DF /* NumberDigitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberDigitCell.xib; sourceTree = "<group>"; };
+		01615CDB2B6ACF7900C9553F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		01615CDD2B6AD28000C9553F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0176D39D2B686B7D00621B1A /* RingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
 		0176D39F2B68713A00621B1A /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		0176D3A22B698E9E00621B1A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				015F1A392B64B1FF0086A8DF /* Coordinator */,
 				015F1A342B6497C10086A8DF /* Home */,
 				015F1A482B6567BD0086A8DF /* ArithmeticOperation */,
+				01615CD92B6ACDC300C9553F /* Settings */,
 				015F1A002B64979F0086A8DF /* AppDelegate.swift */,
 				015F1A022B64979F0086A8DF /* SceneDelegate.swift */,
 				015F1A062B64979F0086A8DF /* Main.storyboard */,
@@ -270,6 +275,23 @@
 				015F1A562B65AC5E0086A8DF /* UIConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		01615CD92B6ACDC300C9553F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				01615CDA2B6ACF4A00C9553F /* View Controllers */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		01615CDA2B6ACF4A00C9553F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				01615CDB2B6ACF7900C9553F /* SettingsViewController.swift */,
+				01615CDD2B6AD28000C9553F /* SettingsView.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		0176D3A12B698E7A00621B1A /* DataManagement */ = {
@@ -433,6 +455,7 @@
 				015F1A522B6570920086A8DF /* UIStackView+Create.swift in Sources */,
 				015F1A3B2B64B2160086A8DF /* Coordinator.swift in Sources */,
 				015F1A572B65AC5E0086A8DF /* UIConstants.swift in Sources */,
+				01615CDC2B6ACF7900C9553F /* SettingsViewController.swift in Sources */,
 				015F1A502B656B080086A8DF /* OperationView.swift in Sources */,
 				015F1A012B64979F0086A8DF /* AppDelegate.swift in Sources */,
 				015F1A472B64CE630086A8DF /* UIColor+Theme.swift in Sources */,
@@ -449,6 +472,7 @@
 				0176D3C02B69956200621B1A /* Score+CoreDataClass.swift in Sources */,
 				0176D3A32B698E9E00621B1A /* CoreDataManager.swift in Sources */,
 				015F1A662B66E1760086A8DF /* NumberDigitCell.swift in Sources */,
+				01615CDE2B6AD28000C9553F /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
