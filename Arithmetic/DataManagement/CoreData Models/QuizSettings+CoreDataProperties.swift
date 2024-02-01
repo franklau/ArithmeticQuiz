@@ -21,7 +21,3 @@ extension QuizSettings {
     @NSManaged public var type: String?
 
 }
-
-extension QuizSettings : Identifiable {
-  
-}

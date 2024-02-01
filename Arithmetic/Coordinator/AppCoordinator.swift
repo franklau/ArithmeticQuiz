@@ -11,6 +11,7 @@ import UIKit
 class AppCoordinator: Coordinator {
   let window: UIWindow
   let rootViewController: UINavigationController
+  let context = CoreDataManager.shared.mainContent
   
   init(window: UIWindow) {
     self.window = window
@@ -48,8 +49,12 @@ extension AppCoordinator: ArithmeticOperationViewControllerDelegate {
 
 extension AppCoordinator: SettingsViewControllerDelegate {
   func userSelectedOperationSetting(operation: ArithmeticOperation) {
-    let settingsOptionsVC = SettingsOptionsViewController()
-    rootViewController.pushViewController(settingsOptionsVC, animated: true)
-//    print("operation \(operation)")
+    do {
+      let quizSetting = try QuizSettings.fetchOrCreateQuizSetting(operation: operation, context: context)
+      let settingsOptionsVC = SettingsOptionsViewController(quizSettings: quizSetting, context: context)
+      rootViewController.pushViewController(settingsOptionsVC, animated: true)
+    } catch let error {
+      print("cannnot fetch quiz setting \(error)")
+    }
   }
 }

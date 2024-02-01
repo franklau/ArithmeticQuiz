@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingOptionsView: View {
     
   @ObservedObject var viewModel: SettingsOptionsViewModel
+  var changeHandler: (SettingsOptionsViewModel) -> Void
   
   var levels: [ArithmeticOperation.Level] = [.easy, .medium, .hard]
   var body: some View {
@@ -18,12 +19,13 @@ struct SettingOptionsView: View {
         HStack {
           Text("\(level.rawValue.capitalized)")
           Spacer()
-          Image(systemName: viewModel.level == level ? "circle.fill" : "circle" )
+          Image(systemName: viewModel.level == level ? "circle.fill" : "circle")
             .foregroundColor(Color.red)
         }
         .contentShape(Rectangle())
         .onTapGesture {
           viewModel.level = level
+          changeHandler(viewModel)
         }
         .padding(.vertical, 10)
         Divider()
@@ -32,11 +34,13 @@ struct SettingOptionsView: View {
     }
     .padding()
   }
+  
+  
 }
 
 struct SettingOptionsView_Previews: PreviewProvider {
     static var previews: some View {
       let viewModel = SettingsOptionsViewModel(level: .easy, duration: 20)
-      SettingOptionsView(viewModel: viewModel)
+      SettingOptionsView(viewModel: viewModel) { _ in }
     }
 }

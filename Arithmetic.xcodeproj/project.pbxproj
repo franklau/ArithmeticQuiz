@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010F55FD2B6C1DF200941CA5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F55FC2B6C1DF200941CA5 /* Constants.swift */; };
 		015F1A012B64979F0086A8DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A002B64979F0086A8DF /* AppDelegate.swift */; };
 		015F1A032B64979F0086A8DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F1A022B64979F0086A8DF /* SceneDelegate.swift */; };
 		015F1A082B64979F0086A8DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015F1A062B64979F0086A8DF /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010F55FC2B6C1DF200941CA5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		015F19FD2B64979F0086A8DF /* Arithmetic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arithmetic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		015F1A002B64979F0086A8DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		015F1A022B64979F0086A8DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				015F1A562B65AC5E0086A8DF /* UIConstants.swift */,
+				010F55FC2B6C1DF200941CA5 /* Constants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				0176D39E2B686B7D00621B1A /* RingLayer.swift in Sources */,
 				0176D3A02B68713A00621B1A /* CircularProgressView.swift in Sources */,
 				0176D3C32B69956200621B1A /* QuizSettings+CoreDataProperties.swift in Sources */,
+				010F55FD2B6C1DF200941CA5 /* Constants.swift in Sources */,
 				015F1A522B6570920086A8DF /* UIStackView+Create.swift in Sources */,
 				015F1A3B2B64B2160086A8DF /* Coordinator.swift in Sources */,
 				015F1A572B65AC5E0086A8DF /* UIConstants.swift in Sources */,
