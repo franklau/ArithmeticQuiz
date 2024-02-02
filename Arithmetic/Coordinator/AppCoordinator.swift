@@ -28,9 +28,14 @@ class AppCoordinator: Coordinator {
 
 extension AppCoordinator: HomeViewControllerDelegate {
   func userSelectedOperation(operation: ArithmeticOperation) {
-    let arithmeticOperationViewController = ArithmeticOperationViewController(operation: operation)
-    arithmeticOperationViewController.delegate = self
-    rootViewController.pushViewController(arithmeticOperationViewController, animated: true)
+    do {
+      let quizSettings = try QuizSettings.fetchOrCreateQuizSetting(operation:operation, context: context)
+      let arithmeticOperationViewController = ArithmeticOperationViewController(operation: operation, quizSettings: quizSettings)
+      arithmeticOperationViewController.delegate = self
+      rootViewController.pushViewController(arithmeticOperationViewController, animated: true)
+    } catch let error {
+      fatalError("Could not fetch quiz settings \(error)")
+    }
   }
   
   func userSelectedSettings() {

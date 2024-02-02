@@ -30,12 +30,22 @@ struct SettingOptionsView: View {
         .padding(.vertical, 10)
         Divider()
       }
+      Text("Quiz Length")
+        .padding(.top, 20)
+      Picker("Quiz Duration", selection: $viewModel.duration) {
+        ForEach(Constants.quizDurationOptions, id: \.self) {
+          Text("\($0) seconds")
+            .accentColor(Color(UIColor.secondaryButton))
+        }
+      }
+      .padding(.leading, -10)
       Spacer()
     }
     .padding()
+    .onChange(of: viewModel.duration) { change in
+      changeHandler(viewModel)
+    }
   }
-  
-  
 }
 
 struct SettingOptionsView_Previews: PreviewProvider {

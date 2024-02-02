@@ -18,12 +18,15 @@ class ArithmeticOperationViewController: UIViewController {
 
   let operation: ArithmeticOperation
   let level = ArithmeticOperation.Level.easy
-  var totalTimeInSeconds = 20.0
+  var totalTimeInSeconds: Double {
+    return Double(quizSettings.durationInSeconds)
+  }
   
   let context = CoreDataManager.shared.mainContent
   
   let edgePadding = 20.0
   var operationView: OperationView!
+  var quizSettings: QuizSettings!
   
   var result: Int!
   var enteredResult = "" {
@@ -109,9 +112,9 @@ class ArithmeticOperationViewController: UIViewController {
     enteredResult = ""
   }
   
-  
-  init(operation: ArithmeticOperation) {
+  init(operation: ArithmeticOperation, quizSettings: QuizSettings) {
     self.operation = operation
+    self.quizSettings = quizSettings
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -221,7 +224,7 @@ class ArithmeticOperationViewController: UIViewController {
   
   @objc func timerElaspsed() {
     let timeElapsed = Date().timeIntervalSince(startTime)
-    let totalTimeInSeconds = CGFloat(totalTimeInSeconds)
+    let totalTimeInSeconds = Double(totalTimeInSeconds)
     if totalTimeInSeconds > timeElapsed {
       let timeRemaining = totalTimeInSeconds - timeElapsed
       let fractionalProgress = timeRemaining / totalTimeInSeconds

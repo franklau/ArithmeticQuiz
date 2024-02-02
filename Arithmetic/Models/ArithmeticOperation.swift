@@ -24,7 +24,7 @@ enum ArithmeticOperation: String, Identifiable {
     case outline
   }
   
-  enum Level: String, Identifiable {
+  enum Level: String, Identifiable, Equatable {
     
     var id: Self {
       return self
