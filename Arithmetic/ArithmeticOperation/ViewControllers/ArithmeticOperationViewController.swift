@@ -17,7 +17,11 @@ class ArithmeticOperationViewController: UIViewController {
   weak var delegate: ArithmeticOperationViewControllerDelegate?
 
   let operation: ArithmeticOperation
-  let level = ArithmeticOperation.Level.easy
+  
+  var level: ArithmeticOperation.Level {
+    return ArithmeticOperation.Level(rawValue: quizSettings.level ?? "") ?? .easy
+  }
+  
   var totalTimeInSeconds: Double {
     return Double(quizSettings.durationInSeconds)
   }
@@ -214,7 +218,7 @@ class ArithmeticOperationViewController: UIViewController {
                                   level: ArithmeticOperation.Level) -> (OperationView, Int) {
     let configuration = UIImage.SymbolConfiguration(font: UIConstants.arithmeticOperationFont)
     let symbol = operation.getSymbolFor(configuration: configuration)
-    let (lhs, rhs) = operation.generateNumbersForLevel(level: .easy)
+    let (lhs, rhs) = operation.generateNumbersForLevel(level: level)
     let operationView = OperationView(lhs: String(lhs), rhs: String(rhs), symbol: symbol)
     operationView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -296,7 +300,7 @@ extension ArithmeticOperationViewController: NumberPadViewDelegate {
     enteredResult = ""
     let configuration = UIImage.SymbolConfiguration(font: UIConstants.arithmeticOperationFont)
     let symbol = operation.getSymbolFor(configuration: configuration)
-    let (lhs, rhs) = operation.generateNumbersForLevel(level: .easy)
+    let (lhs, rhs) = operation.generateNumbersForLevel(level: level)
     operationView.update(lhs: String(lhs), rhs: String(rhs), symbol: symbol) {
       self.result = self.operation.evaluate(lhs: lhs, rhs: rhs)
       self.view.isUserInteractionEnabled = true
