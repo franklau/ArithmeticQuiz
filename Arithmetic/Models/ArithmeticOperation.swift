@@ -99,9 +99,9 @@ enum ArithmeticOperation: String, Identifiable {
     case .easy:
       return 1...9
     case .medium:
-      return 1...99
+      return 10...99
     case .hard:
-      return 1...999
+      return 100...999
     }
   }
 }

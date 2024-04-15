@@ -11,6 +11,8 @@ import CoreData
 
 
 public class Score: NSManagedObject {
+    
+  static let entityName = String(describing: Score.self)
   
   static func createScore(type: String, numCorrect: Int, numWrong: Int, duration: Int, into context: NSManagedObjectContext) -> Score {
     let score = Score(entity: Score.entity(), insertInto: context)
@@ -21,7 +23,9 @@ public class Score: NSManagedObject {
     return score
   }
   
-  func fetchAll(using context: NSManagedObjectContext) {
-    
+  func fetchAll(using context: NSManagedObjectContext) throws -> [Score] {
+    let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: false)
+    let fetchRequest = NSFetchRequest<Score>(entityName: Score.entityName)
+    return try context.fetch(fetchRequest)
   }
 }

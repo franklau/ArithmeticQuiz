@@ -9,6 +9,8 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
+    
+  static let modelName = "Arithmetic"
   static let shared = CoreDataManager()
   
   lazy var persistentContainer: NSPersistentContainer = {
@@ -18,7 +20,7 @@ class CoreDataManager {
      application to it. This property is optional since there are legitimate
      error conditions that could cause the creation of the store to fail.
      */
-    let container = NSPersistentContainer(name: "Arithmetic")
+    let container = NSPersistentContainer(name: Self.modelName)
     container.loadPersistentStores(completionHandler: { (storeDescription, error) in
       print(storeDescription)
       if let error = error as NSError? {

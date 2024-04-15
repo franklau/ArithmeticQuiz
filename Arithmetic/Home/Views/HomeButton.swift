@@ -17,7 +17,7 @@ class HomeButton: UIButton {
   private lazy var shadowLayer = {
     let layer = CAShapeLayer()
     layer.shadowColor = UIColor.black.cgColor
-    layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+    layer.shadowOffset = CGSize(width: 1.0, height: 5.0)
     layer.shadowOpacity = 0.2
     layer.shadowRadius = 3
     return layer

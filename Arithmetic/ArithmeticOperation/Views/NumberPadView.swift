@@ -44,7 +44,6 @@ class NumberPadView: UIView {
   
   let numRows = 4
   let numItemsPerRow = 3
-  let numElementsOnLastRow = 2
   let interItemSpacing = 10.0
   let lineSpacing = 10.0
   
@@ -59,7 +58,6 @@ class NumberPadView: UIView {
     let numberNib = UINib(nibName: NumberDigitCell.nibName, bundle: nil)
     collectionView.register(numberNib, forCellWithReuseIdentifier: NumberDigitCell.nibName)
     collectionView.clipsToBounds = false
-    self.clipsToBounds = false
   }
   
   required init?(coder: NSCoder) {
